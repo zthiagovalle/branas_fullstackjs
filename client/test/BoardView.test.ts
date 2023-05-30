@@ -14,7 +14,7 @@ function sleep(ms: number) {
 test("Deve testar o board view", async function () {
   const boardService: BoardService = {
     async getBoard(idBoard: number) {
-      const board = new Board("Projeto 1");
+      const board = new Board(1, "Projeto 1");
       board.addColumn("Todo", true);
       board.addColumn("Doing", true);
       board.addColumn("Done", false);
@@ -22,7 +22,7 @@ test("Deve testar o board view", async function () {
       board.addCard("Todo", "Atividade 2", 2);
       board.addCard("Todo", "Atividade 3", 1);
       return board;
-    }
+    },
   }
   // const boardService = new BoardServiceHttp();
   const wrapper = mount(BoardViewVue, {
