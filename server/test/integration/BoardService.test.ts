@@ -14,6 +14,7 @@ test("Deve listar os quadros", async function () {
   expect(boards).toHaveLength(1);
   const [board] = boards;
   expect(board.name).toBe("Projeto 1");
+  await connection.close();
 });
 
 test("Deve retornar um quadro", async function () {

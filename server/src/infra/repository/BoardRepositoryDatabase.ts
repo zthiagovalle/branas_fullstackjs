@@ -12,7 +12,7 @@ export default class BoardRepositoryDatabase implements BoardRepository {
     );
     const boards: Board[] = [];
     for (const boardData of boardsData) {
-      const board = new Board(boardData.name);
+      const board = new Board(boardData.id_board, boardData.name);
       boards.push(board);
     }
     return boards;
@@ -21,7 +21,7 @@ export default class BoardRepositoryDatabase implements BoardRepository {
   async get(idBoard: number): Promise<Board> {
     const [boardData] = await this.connection.query("select * from branas.board where id_board = $1", [idBoard]);
     if (!boardData) throw new Error("Board not found");
-    const board = new Board(boardData.name);
+    const board = new Board(boardData.id_board, boardData.name);
     return board;
   }
 }
